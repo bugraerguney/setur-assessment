@@ -16,7 +16,7 @@ namespace Setur.Contact.Application.Contracts.Persistance
         IQueryable<T> Where(Expression<Func<T, bool>> predicate);
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
 
-        ValueTask<T?> GetByIdAsync(int id);
+        ValueTask<T?> GetByIdAsync(Guid id);
         ValueTask AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);

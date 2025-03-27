@@ -27,7 +27,7 @@ namespace Setur.Contact.Persistance
 
 
 
-        public async ValueTask<T?> GetByIdAsync(int id)
+        public async ValueTask<T?> GetByIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -49,7 +49,7 @@ namespace Setur.Contact.Persistance
 
         public Task<List<T>> GetAllAsync()
         {
-            return _dbSet.ToListAsync();
+            return _dbSet.AsNoTracking().ToListAsync();
         }
 
         public Task<List<T>> GetAllPagedAsync(int pageNumber, int pageSize)

@@ -9,5 +9,7 @@ namespace Setur.Contact.Application.Contracts.Persistance.PersonInfos
 {
     public interface IPersonInfoRepository : IGenericRepository<PersonInfo, Guid>
     {
+        Task<PersonInfo?> GetPersonWithContactInfosAsync(Guid id);
+
     }
 }
