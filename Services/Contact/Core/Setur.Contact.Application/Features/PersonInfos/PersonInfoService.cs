@@ -68,11 +68,7 @@ namespace Setur.Contact.Application.Features.PersonInfos
         public async Task<ServiceResult<ResultPersonWithContactInfosDto>> GetPersonWithContactInfosAsync(Guid id)
         {
             var person = await personInfoRepository.GetPersonWithContactInfosAsync(id);
-
-             if (person is null)
-            {
-                return ServiceResult<ResultPersonWithContactInfosDto>.Fail("Kişi bulunamadı", HttpStatusCode.NotFound);
-            }
+ 
 
              var personDto = mapper.Map<ResultPersonWithContactInfosDto>(person);
 
@@ -87,11 +83,7 @@ namespace Setur.Contact.Application.Features.PersonInfos
             {
                 return ServiceResult.Fail("Girdiğiniz kişi bilgileri veritabanında bulunmaktadır", HttpStatusCode.Conflict);
             }
-            var existingPersonInfo = await personInfoRepository.GetByIdAsync(id);
-            if (existingPersonInfo is null)
-            {
-                return ServiceResult.Fail("Güncellenecek veri bulunamadı", HttpStatusCode.NotFound);
-            }
+          
             var newPersonInfo = mapper.Map<PersonInfo>(request);
             newPersonInfo.Id = id;
 

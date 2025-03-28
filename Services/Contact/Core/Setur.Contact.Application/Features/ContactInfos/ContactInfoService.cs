@@ -53,10 +53,6 @@ namespace Setur.Contact.Application.Features.ContactInfos
         {
             var contactInfo = await contactInfoRepository.GetByIdAsync(id);
 
-            if (contactInfo is null)
-            {
-                return ServiceResult<ResultContactInfoDto>.Fail("İletişim bilgisi bulunamadı", HttpStatusCode.NotFound);
-            }
             var contactInfoDto = mapper.Map<ResultContactInfoDto>(contactInfo);
 
             return ServiceResult<ResultContactInfoDto>.Success(contactInfoDto)!;
@@ -70,11 +66,7 @@ namespace Setur.Contact.Application.Features.ContactInfos
             {
                 return ServiceResult.Fail("Girdiğiniz iletişim bilgileri veritabanında bulunmaktadır", HttpStatusCode.Conflict);
             }
-            var existingContactInfo = await contactInfoRepository.GetByIdAsync(id);
-            if (existingContactInfo is null)
-            {
-                return ServiceResult.Fail("Güncellenecek veri bulunamadı", HttpStatusCode.NotFound);
-            }
+           
             var newContactInfo = mapper.Map<ContactInfo>(request);
             newContactInfo.Id = id;
 
