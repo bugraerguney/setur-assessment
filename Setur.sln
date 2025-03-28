@@ -13,13 +13,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5ECFD89F-C443-4010-B278-5B6589A33BA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Contact.Domain", "Services\Contact\Core\Setur.Contact.Domain\Setur.Contact.Domain.csproj", "{2C95D2DA-E7EF-466C-B13A-E20C0B89D265}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Contact.Domain", "Services\Contact\Core\Setur.Contact.Domain\Setur.Contact.Domain.csproj", "{2C95D2DA-E7EF-466C-B13A-E20C0B89D265}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Contact.Application", "Services\Contact\Core\Setur.Contact.Application\Setur.Contact.Application.csproj", "{96301AF2-FB9B-4BAF-AC93-18BB2361D4F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Contact.Application", "Services\Contact\Core\Setur.Contact.Application\Setur.Contact.Application.csproj", "{96301AF2-FB9B-4BAF-AC93-18BB2361D4F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Contact.Persistance", "Services\Contact\Infrastructure\Setur.Contact.Persistance\Setur.Contact.Persistance.csproj", "{2247B28E-BDCE-43B9-AF17-2585A6106E20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Contact.Persistance", "Services\Contact\Infrastructure\Setur.Contact.Persistance\Setur.Contact.Persistance.csproj", "{2247B28E-BDCE-43B9-AF17-2585A6106E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Contact.WebApi", "Services\Contact\Presentation\Setur.Contact.WebApi\Setur.Contact.WebApi.csproj", "{46F0449F-D276-4ADA-99F6-80D25AAB9C8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Contact.WebApi", "Services\Contact\Presentation\Setur.Contact.WebApi\Setur.Contact.WebApi.csproj", "{46F0449F-D276-4ADA-99F6-80D25AAB9C8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{B10BE233-800F-4738-BC13-0E22004B7CAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{41011B90-E8E9-4CE4-8192-94F378CF0094}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7D8FD45A-DC5D-4CF7-99FE-A50289D025F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C3A05E0D-7443-4D92-AA8A-E0DD32A7C79B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.Domain", "Services\Report\Core\Setur.Report.Domain\Setur.Report.Domain.csproj", "{4C3BC5DE-A5FA-415A-80A2-681828728AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.Application", "Services\Report\Core\Setur.Report.Application\Setur.Report.Application.csproj", "{9D1FB302-754B-4CD8-9683-3A199EDE27DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.Persistance", "Services\Report\Infrastructure\Setur.Report.Persistance\Setur.Report.Persistance.csproj", "{1A6EA531-0E40-4018-98F1-96C8080284FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.WebApi", "Services\Report\Presentation\Setur.Report.WebApi\Setur.Report.WebApi.csproj", "{24F3C217-51A2-4544-B6B0-B6DA92D96727}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +59,22 @@ Global
 		{46F0449F-D276-4ADA-99F6-80D25AAB9C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F0449F-D276-4ADA-99F6-80D25AAB9C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F0449F-D276-4ADA-99F6-80D25AAB9C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3BC5DE-A5FA-415A-80A2-681828728AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3BC5DE-A5FA-415A-80A2-681828728AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3BC5DE-A5FA-415A-80A2-681828728AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3BC5DE-A5FA-415A-80A2-681828728AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D1FB302-754B-4CD8-9683-3A199EDE27DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D1FB302-754B-4CD8-9683-3A199EDE27DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D1FB302-754B-4CD8-9683-3A199EDE27DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D1FB302-754B-4CD8-9683-3A199EDE27DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6EA531-0E40-4018-98F1-96C8080284FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6EA531-0E40-4018-98F1-96C8080284FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6EA531-0E40-4018-98F1-96C8080284FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6EA531-0E40-4018-98F1-96C8080284FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +88,14 @@ Global
 		{96301AF2-FB9B-4BAF-AC93-18BB2361D4F9} = {C829C944-A256-4F89-9282-13E12CE0658D}
 		{2247B28E-BDCE-43B9-AF17-2585A6106E20} = {4EDF414F-FBF7-49E0-9AE0-8E8EFE1D81A4}
 		{46F0449F-D276-4ADA-99F6-80D25AAB9C8D} = {5ECFD89F-C443-4010-B278-5B6589A33BA2}
+		{B10BE233-800F-4738-BC13-0E22004B7CAF} = {E307CDBD-CC49-40EE-84A0-2A77E65C6BA6}
+		{41011B90-E8E9-4CE4-8192-94F378CF0094} = {B10BE233-800F-4738-BC13-0E22004B7CAF}
+		{7D8FD45A-DC5D-4CF7-99FE-A50289D025F5} = {B10BE233-800F-4738-BC13-0E22004B7CAF}
+		{C3A05E0D-7443-4D92-AA8A-E0DD32A7C79B} = {B10BE233-800F-4738-BC13-0E22004B7CAF}
+		{4C3BC5DE-A5FA-415A-80A2-681828728AFA} = {41011B90-E8E9-4CE4-8192-94F378CF0094}
+		{9D1FB302-754B-4CD8-9683-3A199EDE27DA} = {41011B90-E8E9-4CE4-8192-94F378CF0094}
+		{1A6EA531-0E40-4018-98F1-96C8080284FA} = {7D8FD45A-DC5D-4CF7-99FE-A50289D025F5}
+		{24F3C217-51A2-4544-B6B0-B6DA92D96727} = {C3A05E0D-7443-4D92-AA8A-E0DD32A7C79B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6B4239-1E86-4C5F-BBFA-9D6B9CEE3146}
