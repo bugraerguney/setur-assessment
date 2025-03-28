@@ -1,5 +1,6 @@
 using Setur.Contact.Application.Extensions;
 using Setur.Contact.Persistance.Extensions;
+using Setur.Contact.WebApi.ExceptionHandlers;
 using Setur.Contact.WebApi.Filters;
 using System.Text.Json.Serialization;
 
@@ -22,6 +23,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddServices(builder.Configuration);
 builder.Services.AddScoped(typeof(NotFoundFilter<,>));
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
