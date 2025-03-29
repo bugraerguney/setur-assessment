@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\Setur.Report.Application\Setur.Report.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Setur.Report.Persistance\Setur.Report.Persistance.csproj" />
   </ItemGroup>

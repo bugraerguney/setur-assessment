@@ -24,17 +24,21 @@ namespace Setur.ReportCreateWorkerService.Services
         public IModel Connect()
         {
             if (_channel is not null && _channel.IsOpen)
-            {
                 return _channel;
-            }
 
             _connection = _connectionFactory.CreateConnection();
             _channel = _connection.CreateModel();
+
+            // 🔧 Eklenmeli!
+            _channel.ExchangeDeclare("ReportDirectExchange", type: "direct", durable: true, autoDelete: false);
+            _channel.QueueDeclare("queue-report", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind("queue-report", "ReportDirectExchange", "report-root-file");
 
             _logger.LogInformation("RabbitMQ ile bağlantı kuruldu");
 
             return _channel;
         }
+
 
         public void Dispose()
         {

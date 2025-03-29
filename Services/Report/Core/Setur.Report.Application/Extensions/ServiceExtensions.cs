@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RabbitMQ.Client;
+using Setur.Report.Application.Features.ReportContacts;
+using Setur.Report.Application.Features.Services;
+using Setur.Report.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +23,16 @@ namespace Setur.Report.Application.Extensions
             {
                 opt.SuppressModelStateInvalidFilter = true;
             });
+            services.AddSingleton(sp =>
+                new ConnectionFactory
+                {
+                    Uri = new Uri(configuration.GetConnectionString("RabbitMQ")),
+                    DispatchConsumersAsync = true
+                });
 
+            services.AddScoped<IReportContactService, ReportContactService>();
+            services.AddScoped<IRabbitMqPublisher, RabbitMQPublisher>();
+            services.AddSingleton<RabbitMQClientService>();
 
             return services;
         }

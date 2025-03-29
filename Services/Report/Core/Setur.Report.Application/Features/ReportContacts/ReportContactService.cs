@@ -43,7 +43,7 @@ namespace Setur.Report.Application.Features.ReportContacts
                 ReportId = report.Id
             });
 
-            return ServiceResult<Guid>.SuccessAsCreated(report.Id, $"api/reports/{report.Id}");
+            return ServiceResult<Guid>.SuccessAsCreated(report.Id, $"api/reportcontacts/{report.Id}");
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Contracts.Persistance.ReportDetails
 {
-    public interface IReportDetailRepository : IGenericRepository<ReportDetail>
+    public interface IReportDetailRepository : IGenericRepository<ReportDetail,Guid>
     {
     }
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Contracts.Persistance.ReportContacts
 {
-    public interface IReportContactRepository : IGenericRepository<ReportContact>
+    public interface IReportContactRepository : IGenericRepository<ReportContact,Guid>
     {
-        Task<List<ReportContact>> GetAllWithDetailsAsync();
+        Task<ReportContact> GetReportWithDetailsAsync(Guid id);
     }
 }

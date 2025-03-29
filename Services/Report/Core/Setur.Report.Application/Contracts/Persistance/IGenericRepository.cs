@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Contracts.Persistance
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T,TId> where T : class where TId : struct
     {
         Task<List<T>> GetAllAsync();
         ValueTask<T?> GetByIdAsync(Guid id);

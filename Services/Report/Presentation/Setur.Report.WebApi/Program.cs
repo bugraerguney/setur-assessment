@@ -1,4 +1,5 @@
 
+using Setur.Report.Application.Extensions;
 using Setur.Report.Persistance.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRepository(builder.Configuration);
+builder.Services.AddServices(builder.Configuration);
 
 var app = builder.Build();
 

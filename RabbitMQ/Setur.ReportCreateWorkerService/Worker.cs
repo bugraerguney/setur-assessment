@@ -9,6 +9,8 @@ using Setur.Shared.Messages;
 using System.Text;
 using System.Text.Json;
 using System.Net.Http;
+using Setur.Shared.ResponseData;
+using Setur.Report.Application;
 namespace Setur.ReportCreateWorkerService
 {
     public class Worker : BackgroundService
@@ -33,7 +35,7 @@ namespace Setur.ReportCreateWorkerService
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var consumer = new EventingBasicConsumer(_channel);
+            var consumer = new AsyncEventingBasicConsumer(_channel);
 
             _channel.BasicConsume(queue: RabbitMQClientService.QueueName, autoAck: false, consumer: consumer);
 
@@ -51,18 +53,22 @@ namespace Setur.ReportCreateWorkerService
 
                     var reportRepo = scope.ServiceProvider.GetRequiredService<IReportContactRepository>();
                     var detailRepo = scope.ServiceProvider.GetRequiredService<IReportDetailRepository>();
+                    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+
                     var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
 
                      var client = httpClientFactory.CreateClient("contactapi");
-                    var response = await client.GetAsync("api/statistics/locations");
+                    var response = await client.GetAsync("http://localhost:7176/api/PersonInfos/GetPersonStatistics");
 
                     response.EnsureSuccessStatusCode();
 
                     var json = await response.Content.ReadAsStringAsync();
-                    var statistics = JsonSerializer.Deserialize<List<PersonStatisticDto>>(json, new JsonSerializerOptions
+                    var wrapper = JsonSerializer.Deserialize<ServiceResponse<List<PersonStatisticDto>>>(json, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
+
+                    var statistics = wrapper?.Data;
 
                     if (statistics != null && statistics.Count > 0)
                     {
@@ -86,8 +92,9 @@ namespace Setur.ReportCreateWorkerService
                         report.CompletedAt = DateTime.UtcNow;
                         reportRepo.Update(report);
                     }
+                    await unitOfWork.SaveChangesAsync();
 
- 
+
                     _channel.BasicAck(ea.DeliveryTag, multiple: false);
                     _logger.LogInformation("Rapor iþleme tamamlandý.");
                 }

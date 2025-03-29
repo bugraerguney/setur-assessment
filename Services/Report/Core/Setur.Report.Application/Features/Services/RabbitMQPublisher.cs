@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Features.Services
 {
-    public class RabbitMQPublisher
+    public class RabbitMQPublisher:IRabbitMqPublisher
     {
         private readonly RabbitMQClientService _rabbitmqClientService;
 

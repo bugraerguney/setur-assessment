@@ -1,8 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Setur.Contact.Domain.Options;
+using Setur.Report.Application;
+using Setur.Report.Application.Contracts.Persistance;
+using Setur.Report.Application.Contracts.Persistance.ReportContacts;
+using Setur.Report.Application.Contracts.Persistance.ReportDetails;
+using Setur.Report.Application.Features.ReportContacts;
+using Setur.Report.Domain.Options;
 using Setur.Report.Persistance.Context;
+using Setur.Report.Persistance.ReportContacts;
+using Setur.Report.Persistance.ReportDetails;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +30,10 @@ namespace Setur.Report.Persistance.Extensions
                     sqlServerOptionsAction.MigrationsAssembly(typeof(PersistanceAssembly).Assembly.FullName);
                 });
              });
-             
+            services.AddScoped<IReportContactRepository, ReportContactRepository>();
+            services.AddScoped<IReportDetailRepository, ReportDetailRepository>();
+            services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

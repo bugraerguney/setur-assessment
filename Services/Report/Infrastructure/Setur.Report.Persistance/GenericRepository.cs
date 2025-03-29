@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Setur.Report.Application.Contracts.Persistance;
+using Setur.Report.Domain.Entities.Common;
 using Setur.Report.Persistance.Context;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Persistance
 {
-    public class GenericRepository<T>(ReportDbContext context) : IGenericRepository<T> where T : class
+    public class GenericRepository<T,TId>(ReportDbContext context) : IGenericRepository<T, TId> where T : BaseEntity<TId> where TId : struct
     {
         protected ReportDbContext Context = context;
         private readonly DbSet<T> _dbSet = context.Set<T>();
