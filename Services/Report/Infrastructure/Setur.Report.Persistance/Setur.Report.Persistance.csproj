@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Contact\Core\Setur.Contact.Application\Setur.Contact.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Setur.Report.Application\Setur.Report.Application.csproj" />
     <ProjectReference Include="..\..\Core\Setur.Report.Domain\Setur.Report.Domain.csproj" />
   </ItemGroup>
 

@@ -29,13 +29,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C3A05E0D-7443-4D92-AA8A-E0DD32A7C79B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.Domain", "Services\Report\Core\Setur.Report.Domain\Setur.Report.Domain.csproj", "{4C3BC5DE-A5FA-415A-80A2-681828728AFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Report.Domain", "Services\Report\Core\Setur.Report.Domain\Setur.Report.Domain.csproj", "{4C3BC5DE-A5FA-415A-80A2-681828728AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.Application", "Services\Report\Core\Setur.Report.Application\Setur.Report.Application.csproj", "{9D1FB302-754B-4CD8-9683-3A199EDE27DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Report.Application", "Services\Report\Core\Setur.Report.Application\Setur.Report.Application.csproj", "{9D1FB302-754B-4CD8-9683-3A199EDE27DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.Persistance", "Services\Report\Infrastructure\Setur.Report.Persistance\Setur.Report.Persistance.csproj", "{1A6EA531-0E40-4018-98F1-96C8080284FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Report.Persistance", "Services\Report\Infrastructure\Setur.Report.Persistance\Setur.Report.Persistance.csproj", "{1A6EA531-0E40-4018-98F1-96C8080284FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.WebApi", "Services\Report\Presentation\Setur.Report.WebApi\Setur.Report.WebApi.csproj", "{24F3C217-51A2-4544-B6B0-B6DA92D96727}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Report.WebApi", "Services\Report\Presentation\Setur.Report.WebApi\Setur.Report.WebApi.csproj", "{24F3C217-51A2-4544-B6B0-B6DA92D96727}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQ", "RabbitMQ", "{227B55EA-5EA4-4AFC-83B9-853B0A214138}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A0A45D15-A2F1-445D-BB0D-E66849DC0C3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Shared", "Shared\Setur.Shared\Setur.Shared.csproj", "{59FFAAC7-05C6-4951-AB53-A73325D2053D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.ReportCreateWorkerService", "RabbitMQ\Setur.ReportCreateWorkerService\Setur.ReportCreateWorkerService.csproj", "{3D235601-0072-4F18-8256-BAC199E4250A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +83,14 @@ Global
 		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24F3C217-51A2-4544-B6B0-B6DA92D96727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59FFAAC7-05C6-4951-AB53-A73325D2053D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59FFAAC7-05C6-4951-AB53-A73325D2053D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59FFAAC7-05C6-4951-AB53-A73325D2053D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59FFAAC7-05C6-4951-AB53-A73325D2053D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D235601-0072-4F18-8256-BAC199E4250A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D235601-0072-4F18-8256-BAC199E4250A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D235601-0072-4F18-8256-BAC199E4250A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D235601-0072-4F18-8256-BAC199E4250A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +112,10 @@ Global
 		{9D1FB302-754B-4CD8-9683-3A199EDE27DA} = {41011B90-E8E9-4CE4-8192-94F378CF0094}
 		{1A6EA531-0E40-4018-98F1-96C8080284FA} = {7D8FD45A-DC5D-4CF7-99FE-A50289D025F5}
 		{24F3C217-51A2-4544-B6B0-B6DA92D96727} = {C3A05E0D-7443-4D92-AA8A-E0DD32A7C79B}
+		{227B55EA-5EA4-4AFC-83B9-853B0A214138} = {E307CDBD-CC49-40EE-84A0-2A77E65C6BA6}
+		{A0A45D15-A2F1-445D-BB0D-E66849DC0C3E} = {E307CDBD-CC49-40EE-84A0-2A77E65C6BA6}
+		{59FFAAC7-05C6-4951-AB53-A73325D2053D} = {A0A45D15-A2F1-445D-BB0D-E66849DC0C3E}
+		{3D235601-0072-4F18-8256-BAC199E4250A} = {227B55EA-5EA4-4AFC-83B9-853B0A214138}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6B4239-1E86-4C5F-BBFA-9D6B9CEE3146}

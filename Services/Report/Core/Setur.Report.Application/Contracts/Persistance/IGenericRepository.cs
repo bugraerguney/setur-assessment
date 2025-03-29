@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Contracts.Persistance
 {
-    public interface IGenericRepository
+    public interface IGenericRepository<T> where T : class
     {
+        Task<List<T>> GetAllAsync();
+        ValueTask<T?> GetByIdAsync(Guid id);
+        ValueTask AddAsync(T entity);
+
+        void Update(T entity);
 
     }
 }
