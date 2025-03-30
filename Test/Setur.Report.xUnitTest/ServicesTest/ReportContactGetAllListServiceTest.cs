@@ -40,30 +40,31 @@ namespace Setur.Report.xUnitTest.ServicesTest
         }
 
         [Fact]
-        public async Task GetAllListAsync_Should_Return_Mapped_List()
+        public async Task GetAllListAsync_Should_Return_All_Reports()
         {
             // Arrange
             var reports = new List<ReportContact>
             {
-                new() { Id = Guid.NewGuid(), RequestedAt = DateTime.UtcNow, Status = ReportStatus.Completed },
-                new() { Id = Guid.NewGuid(), RequestedAt = DateTime.UtcNow.AddMinutes(-10), Status = ReportStatus.Preparing }
+                new() { Id = Guid.NewGuid(), RequestedAt = DateTime.UtcNow, Status = ReportStatus.Completed, CompletedAt = DateTime.UtcNow.AddMinutes(2) },
+                new() { Id = Guid.NewGuid(), RequestedAt = DateTime.UtcNow, Status = ReportStatus.Preparing, CompletedAt = null }
             };
 
-            var mappedReports = new List<ResultReportContactDto>
+            var mapped = new List<ResultReportContactDto>
             {
-                new(reports[0].Id, reports[0].RequestedAt, null, reports[0].Status),
-                new(reports[1].Id, reports[1].RequestedAt, null, reports[1].Status)
+                new() { Id = reports[0].Id, RequestedAt = reports[0].RequestedAt, CompletedAt = reports[0].CompletedAt, Status = reports[0].Status },
+                new() { Id = reports[1].Id, RequestedAt = reports[1].RequestedAt, CompletedAt = reports[1].CompletedAt, Status = reports[1].Status }
             };
 
             _mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(reports);
-            _mockMapper.Setup(m => m.Map<List<ResultReportContactDto>>(reports)).Returns(mappedReports);
+            _mockMapper.Setup(m => m.Map<List<ResultReportContactDto>>(reports)).Returns(mapped);
 
             // Act
             var result = await _service.GetAllListAsync();
 
             // Assert
             result.IsSuccess.Should().BeTrue();
-            result.Data.Should().BeEquivalentTo(mappedReports);
+            result.Data.Should().NotBeNull();
+            result.Data.Should().BeEquivalentTo(mapped);
             result.Status.Should().Be(HttpStatusCode.OK);
         }
     }
