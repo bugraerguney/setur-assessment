@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Setur.Report.Application.Features.ReportContacts.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Setur.Report.Application.Features.ReportContacts
     public interface IReportContactService
     {
         Task<ServiceResult<Guid>> CreateAsync();
+        Task<ServiceResult<List<ResultReportContactDto>>> GetAllListAsync();
+        Task<ServiceResult<ResultReportWithDetailsDto>> GetByReportIdWithDetailsAsync(Guid id);
 
     }
 }

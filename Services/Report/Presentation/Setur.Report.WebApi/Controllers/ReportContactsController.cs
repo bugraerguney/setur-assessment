@@ -13,5 +13,15 @@ namespace Setur.Report.WebApi.Controllers
         {
             return CreateActionResult(await reportContactService.CreateAsync());
         }
+        [HttpGet]
+        public async Task<IActionResult> GetReports()
+        {
+            return CreateActionResult(await reportContactService.GetAllListAsync());
+        }
+        [HttpGet("GetReportWithDetails/{id}")]
+        public async Task<IActionResult> GetReportWithDetails(Guid id)
+        {
+            return CreateActionResult(await reportContactService.GetByReportIdWithDetailsAsync(id));
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Setur.Report.Application.Contracts.Persistance.ReportContacts;
+﻿using AutoMapper;
+using Setur.Report.Application.Contracts.Persistance.ReportContacts;
+using Setur.Report.Application.Features.ReportContacts.Dtos;
 using Setur.Report.Application.Features.Services;
 using Setur.Report.Domain.Entities;
 using Setur.Shared.Messages;
@@ -15,15 +17,18 @@ namespace Setur.Report.Application.Features.ReportContacts
         private readonly IReportContactRepository _reportRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRabbitMqPublisher _messagePublisher;
+        private readonly IMapper _mapper;
 
         public ReportContactService(
             IReportContactRepository reportRepository,
             IUnitOfWork unitOfWork,
-            IRabbitMqPublisher messagePublisher)
+            IRabbitMqPublisher messagePublisher,
+            IMapper mapper)
         {
             _reportRepository = reportRepository;
             _unitOfWork = unitOfWork;
             _messagePublisher = messagePublisher;
+            _mapper = mapper;
         }
 
         public async Task<ServiceResult<Guid>> CreateAsync()
@@ -44,6 +49,25 @@ namespace Setur.Report.Application.Features.ReportContacts
             });
 
             return ServiceResult<Guid>.SuccessAsCreated(report.Id, $"api/reportcontacts/{report.Id}");
+        }
+
+        public async Task<ServiceResult<List<ResultReportContactDto>>> GetAllListAsync()
+        {
+            var contactInfos = await _reportRepository.GetAllAsync();
+
+            var contactInfosDto = _mapper.Map<List<ResultReportContactDto>>(contactInfos);
+
+            return ServiceResult<List<ResultReportContactDto>>.Success(contactInfosDto);
+        }
+
+        public async Task<ServiceResult<ResultReportWithDetailsDto>> GetByReportIdWithDetailsAsync(Guid id)
+        {
+            var report = await _reportRepository.GetReportWithDetailsAsync(id);
+
+
+            var reportDto = _mapper.Map<ResultReportWithDetailsDto>(report);
+
+            return ServiceResult<ResultReportWithDetailsDto>.Success(reportDto);
         }
     }
 }
