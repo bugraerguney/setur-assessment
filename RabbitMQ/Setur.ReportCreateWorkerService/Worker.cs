@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Net.Http;
 using Setur.Shared.ResponseData;
 using Setur.Report.Application;
+using Setur.ReportCreateWorkerService.Services.Reports;
 namespace Setur.ReportCreateWorkerService
 {
     public class Worker : BackgroundService
@@ -18,19 +19,21 @@ namespace Setur.ReportCreateWorkerService
         private readonly RabbitMQClientService _rabbitMQClientService;
         private readonly ILogger<Worker> _logger;
         private readonly IServiceScopeFactory _serviceScopeFactory;
-
+        private readonly IReportProcessService _reportProcessService;
         private IModel _channel;
 
         public Worker(
             RabbitMQClientService rabbitMQClientService,
             ILogger<Worker> logger,
-            IServiceScopeFactory serviceScopeFactory)
+            IServiceScopeFactory serviceScopeFactory,
+            IReportProcessService reportProcessService)
         {
             _rabbitMQClientService = rabbitMQClientService;
             _logger = logger;
             _serviceScopeFactory = serviceScopeFactory;
 
             _channel = _rabbitMQClientService.Connect();
+            _reportProcessService = reportProcessService;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -57,42 +60,7 @@ namespace Setur.ReportCreateWorkerService
 
                     var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
 
-                     var client = httpClientFactory.CreateClient("contactapi");
-                    var response = await client.GetAsync("http://localhost:7176/api/PersonInfos/GetPersonStatistics");
-
-                    response.EnsureSuccessStatusCode();
-
-                    var json = await response.Content.ReadAsStringAsync();
-                    var wrapper = JsonSerializer.Deserialize<ServiceResponse<List<PersonStatisticDto>>>(json, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-
-                    var statistics = wrapper?.Data;
-
-                    if (statistics != null && statistics.Count > 0)
-                    {
-                        foreach (var stat in statistics)
-                        {
-                            await detailRepo.AddAsync(new ReportDetail
-                            {
-                                Id = Guid.NewGuid(),
-                                ReportId = message!.ReportId,
-                                Location = stat.Location,
-                                PersonCount = stat.PersonCount,
-                                PhoneNumberCount = stat.PhoneNumberCount
-                            });
-                        }
-                    }
-
-                    var report = await reportRepo.GetByIdAsync(message!.ReportId);
-                    if (report is not null)
-                    {
-                        report.Status = ReportStatus.Completed;
-                        report.CompletedAt = DateTime.UtcNow;
-                        reportRepo.Update(report);
-                    }
-                    await unitOfWork.SaveChangesAsync();
+                   await _reportProcessService.ProcessAsync(message.ReportId);
 
 
                     _channel.BasicAck(ea.DeliveryTag, multiple: false);

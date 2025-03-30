@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Contact.xUnitTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.xUnitTest", "Test\Setur.Report.xUnitTest\Setur.Report.xUnitTest.csproj", "{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.ReportRabbitMQ.xUnitTest", "Test\Setur.ReportRabbitMQ.xUnitTest\Setur.ReportRabbitMQ.xUnitTest.csproj", "{F063A7DA-FDC4-4E7C-8AC0-CF37FA74C578}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F063A7DA-FDC4-4E7C-8AC0-CF37FA74C578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F063A7DA-FDC4-4E7C-8AC0-CF37FA74C578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F063A7DA-FDC4-4E7C-8AC0-CF37FA74C578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F063A7DA-FDC4-4E7C-8AC0-CF37FA74C578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +138,7 @@ Global
 		{3D235601-0072-4F18-8256-BAC199E4250A} = {227B55EA-5EA4-4AFC-83B9-853B0A214138}
 		{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0} = {D772D894-50E8-440C-9A51-6D07DD0AE152}
 		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3} = {D772D894-50E8-440C-9A51-6D07DD0AE152}
+		{F063A7DA-FDC4-4E7C-8AC0-CF37FA74C578} = {D772D894-50E8-440C-9A51-6D07DD0AE152}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6B4239-1E86-4C5F-BBFA-9D6B9CEE3146}
