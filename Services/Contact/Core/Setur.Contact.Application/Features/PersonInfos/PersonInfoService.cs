@@ -74,12 +74,12 @@ namespace Setur.Contact.Application.Features.PersonInfos
 
         public async Task<ServiceResult<ResultPersonWithContactInfosDto>> GetPersonWithContactInfosAsync(Guid id)
         {
+
             var person = await personInfoRepository.GetPersonWithContactInfosAsync(id);
- 
 
-             var personDto = mapper.Map<ResultPersonWithContactInfosDto>(person);
-
+            var personDto = mapper.Map<ResultPersonWithContactInfosDto>(person);
              return ServiceResult<ResultPersonWithContactInfosDto>.Success(personDto);
+
         }
 
         public async Task<ServiceResult> UpdateAsync(Guid id, UpdatePersonInfoRequest request)

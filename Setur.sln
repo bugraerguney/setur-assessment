@@ -41,9 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQ", "RabbitMQ", "{22
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A0A45D15-A2F1-445D-BB0D-E66849DC0C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Shared", "Shared\Setur.Shared\Setur.Shared.csproj", "{59FFAAC7-05C6-4951-AB53-A73325D2053D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.Shared", "Shared\Setur.Shared\Setur.Shared.csproj", "{59FFAAC7-05C6-4951-AB53-A73325D2053D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.ReportCreateWorkerService", "RabbitMQ\Setur.ReportCreateWorkerService\Setur.ReportCreateWorkerService.csproj", "{3D235601-0072-4F18-8256-BAC199E4250A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setur.ReportCreateWorkerService", "RabbitMQ\Setur.ReportCreateWorkerService\Setur.ReportCreateWorkerService.csproj", "{3D235601-0072-4F18-8256-BAC199E4250A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D772D894-50E8-440C-9A51-6D07DD0AE152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Contact.xUnitTest", "Test\Setur.Contact.xUnitTest\Setur.Contact.xUnitTest.csproj", "{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setur.Report.xUnitTest", "Test\Setur.Report.xUnitTest\Setur.Report.xUnitTest.csproj", "{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +97,14 @@ Global
 		{3D235601-0072-4F18-8256-BAC199E4250A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D235601-0072-4F18-8256-BAC199E4250A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D235601-0072-4F18-8256-BAC199E4250A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +130,8 @@ Global
 		{A0A45D15-A2F1-445D-BB0D-E66849DC0C3E} = {E307CDBD-CC49-40EE-84A0-2A77E65C6BA6}
 		{59FFAAC7-05C6-4951-AB53-A73325D2053D} = {A0A45D15-A2F1-445D-BB0D-E66849DC0C3E}
 		{3D235601-0072-4F18-8256-BAC199E4250A} = {227B55EA-5EA4-4AFC-83B9-853B0A214138}
+		{CDB26678-51D8-42C9-BDA4-EDD0BFEE54C0} = {D772D894-50E8-440C-9A51-6D07DD0AE152}
+		{D4E15682-ABEB-45C9-B72B-70DF441DF6D3} = {D772D894-50E8-440C-9A51-6D07DD0AE152}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6B4239-1E86-4C5F-BBFA-9D6B9CEE3146}

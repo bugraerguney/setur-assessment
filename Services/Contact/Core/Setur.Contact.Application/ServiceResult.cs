@@ -46,10 +46,14 @@ namespace Setur.Contact.Application
 
             return new ServiceResult<T>() { ErrorMessage = [errorMessage], Status = status };
         }
+
+      
+
     }
 
     public class ServiceResult
     {
+
         public List<string>? ErrorMessage { get; set; }
         [JsonIgnore]
         public bool IsSuccess => ErrorMessage == null || ErrorMessage.Count == 0;
@@ -76,6 +80,7 @@ namespace Setur.Contact.Application
 
             return new ServiceResult() { ErrorMessage = [errorMessage], Status = status };
         }
+
     }
 }
 

@@ -24,7 +24,7 @@ namespace Setur.Contact.WebApi.Controllers
         {
             return CreateActionResult(await PersonInfoService.GetByIdAsync(id));
         }
-        [HttpGet("{id}/GetPersonWithContactInfos")]
+        [HttpGet("GetPersonWithContactInfos/{id}")]
         public async Task<IActionResult> GetPersonWithContactInfosAsync(Guid id)
         {
             return CreateActionResult(await PersonInfoService.GetPersonWithContactInfosAsync(id));
