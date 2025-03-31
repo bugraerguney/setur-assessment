@@ -11,9 +11,9 @@ namespace Setur.Report.Application.Features.Services
 {
     public class RabbitMQPublisher:IRabbitMqPublisher
     {
-        private readonly RabbitMQClientService _rabbitmqClientService;
+        private readonly IRabbitMQClientService _rabbitmqClientService;
 
-        public RabbitMQPublisher(RabbitMQClientService rabbitmqClientService)
+        public RabbitMQPublisher(IRabbitMQClientService rabbitmqClientService)
         {
             _rabbitmqClientService = rabbitmqClientService;
         }
@@ -28,7 +28,13 @@ namespace Setur.Report.Application.Features.Services
             var properties = channel.CreateBasicProperties();
             properties.Persistent = true;
 
-            channel.BasicPublish(exchange: RabbitMQClientService.ExchangeName, routingKey: RabbitMQClientService.RoutingReport, properties, bodyByte);
+            channel.BasicPublish(
+       exchange: RabbitMQClientService.ExchangeName,
+       routingKey: RabbitMQClientService.RoutingReport,
+       mandatory: false,
+       basicProperties: properties,
+       body: bodyByte);
+
 
         }
     }

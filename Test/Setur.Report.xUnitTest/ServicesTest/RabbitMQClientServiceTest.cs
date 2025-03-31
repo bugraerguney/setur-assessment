@@ -1,14 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
+using Moq;
 using RabbitMQ.Client;
+using Setur.Report.Application.Features.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Setur.Report.Application.Features.Services
+namespace Setur.Report.xUnitTest.ServicesTest
 {
-    public class RabbitMQClientService :IRabbitMQClientService, IDisposable
+    public class RabbitMQClientServiceTest
     {
         private readonly ConnectionFactory _connectionFactory;
         private IConnection _connection;
@@ -18,7 +20,14 @@ namespace Setur.Report.Application.Features.Services
         public static string QueueName = "queue-report";
         private readonly ILogger<RabbitMQClientService> _logger;
 
-        public RabbitMQClientService(ConnectionFactory connectionFactory, ILogger<RabbitMQClientService> logger)
+         public RabbitMQClientServiceTest(IConnection connection, IModel channel, ILogger<RabbitMQClientService> logger)
+        {
+            _connection = connection;
+            _channel = channel;
+            _logger = logger;
+        }
+
+        public RabbitMQClientServiceTest(ConnectionFactory connectionFactory, ILogger<RabbitMQClientService> logger)
         {
             _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -59,5 +68,4 @@ namespace Setur.Report.Application.Features.Services
             _logger.LogInformation("RabbitMQ bağlantısı kapatıldı");
         }
     }
-
 }

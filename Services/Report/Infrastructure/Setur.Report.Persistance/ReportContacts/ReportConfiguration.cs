@@ -9,7 +9,7 @@ using Setur.Report.Domain.Entities;
 
 namespace Setur.Report.Persistance.Report
 {
-    public class ReportConfiguration
+    public class ReportConfiguration : IEntityTypeConfiguration<ReportContact>
     {
         public void Configure(EntityTypeBuilder<ReportContact> builder)
         {
@@ -21,14 +21,13 @@ namespace Setur.Report.Persistance.Report
             builder.Property(r => r.CompletedAt);
 
             builder.Property(r => r.Status)
-                   .HasConversion<int>()  
+                   .HasConversion<int>()
                    .IsRequired();
 
             builder.HasMany(r => r.Details)
                    .WithOne(d => d.Report)
                    .HasForeignKey(d => d.ReportId)
-                   .OnDelete(DeleteBehavior.Cascade);  
-
-         }
+                   .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

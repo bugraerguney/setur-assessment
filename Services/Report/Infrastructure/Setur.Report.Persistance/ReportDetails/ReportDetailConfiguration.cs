@@ -9,7 +9,7 @@ using Setur.Report.Domain.Entities;
 
 namespace Setur.Report.Persistance.ReportDetails
 {
-    public class ReportDetailConfiguration
+    public class ReportDetailConfiguration : IEntityTypeConfiguration<ReportDetail>
     {
         public void Configure(EntityTypeBuilder<ReportDetail> builder)
         {
@@ -29,7 +29,6 @@ namespace Setur.Report.Persistance.ReportDetails
                    .WithMany(r => r.Details)
                    .HasForeignKey(rd => rd.ReportId)
                    .OnDelete(DeleteBehavior.Cascade);
-
-         }
+        }
     }
 }
