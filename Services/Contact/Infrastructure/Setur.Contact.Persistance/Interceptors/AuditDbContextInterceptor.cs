@@ -20,14 +20,14 @@ namespace Setur.Contact.Persistance.Interceptors
         private static void AddBehavior(DbContext context, IAuditEntity auditEntity)
         {
 
-            auditEntity.Created = DateTime.Now;
+            auditEntity.Created = DateTime.UtcNow;
             context.Entry(auditEntity).Property(x => x.Updated).IsModified = false;
         }
 
         private static void ModifiedBehavior(DbContext context, IAuditEntity auditEntity)
         {
             context.Entry(auditEntity).Property(x => x.Created).IsModified = false;
-            auditEntity.Updated = DateTime.Now;
+            auditEntity.Updated = DateTime.UtcNow;
         }
         public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
         {
@@ -42,25 +42,7 @@ namespace Setur.Contact.Persistance.Interceptors
                 }
                 _behaviors[item.State](eventData.Context, auditEntity);
 
-
-                // switch (item.State)
-                // {
-                //     case EntityState.Added:
-
-
-                //     AddBehavior(eventData.Context,auditEntity);
-
-
-                //         break;
-
-                //     case EntityState.Modified:
-
-
-                //      ModifiedBehavior(eventData.Context,auditEntity);
-
-
-                //         break;
-                //}
+ 
 
 
             }
