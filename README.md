@@ -77,3 +77,5 @@ Worker Servisi:
 bash
 cd Setur.ReportCreateWorkerService
 dotnet run
+
+NOT:http://localhost:7051/api/ReportContacts adresine post isteği attığınızda rapor oluşturma talebiniz başlamış olur.
