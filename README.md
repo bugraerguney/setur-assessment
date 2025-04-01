@@ -25,7 +25,7 @@ Veri alışverişi için **RabbitMQ** kullanılmakta, veritabanları ise **Postg
 - ✅ FluentValidation  
 - ✅ Entity Framework Core  
 - ✅ BackgroundService (Hosted Service)
-
+- ✅ xUnit
 ---
 
 ## 🔧 Dış Bağımlılıklar
