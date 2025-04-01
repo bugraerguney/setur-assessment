@@ -44,17 +44,12 @@ Password=123456aA*
 🐳 Veritabanlarını Docker ile Kurma
 Proje içinde paylaşılan Setur-Db-Contact-Docker ve Setur-Db-Report-Docker klasöründe aşağıdakiler yer alır:
 
-docker-compose.yml
-
-dump-contact.sql
-
-dump-report.sql
-
-
-
 Kurmak için:
 
-cd file_name
+cd Setur-Db-Contact-Docker
+docker-compose up -d
+
+Setur-Db-Report-Docker
 docker-compose up -d
 
 Veritabanları şu şekilde erişilebilir olur:
