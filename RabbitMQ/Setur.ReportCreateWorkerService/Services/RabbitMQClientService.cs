@@ -29,7 +29,6 @@ namespace Setur.ReportCreateWorkerService.Services
             _connection = _connectionFactory.CreateConnection();
             _channel = _connection.CreateModel();
 
-            // 🔧 Eklenmeli!
             _channel.ExchangeDeclare("ReportDirectExchange", type: "direct", durable: true, autoDelete: false);
             _channel.QueueDeclare("queue-report", durable: true, exclusive: false, autoDelete: false, arguments: null);
             _channel.QueueBind("queue-report", "ReportDirectExchange", "report-root-file");

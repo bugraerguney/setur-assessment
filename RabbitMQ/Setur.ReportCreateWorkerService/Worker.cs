@@ -25,15 +25,13 @@ namespace Setur.ReportCreateWorkerService
         public Worker(
             RabbitMQClientService rabbitMQClientService,
             ILogger<Worker> logger,
-            IServiceScopeFactory serviceScopeFactory,
-            IReportProcessService reportProcessService)
+            IServiceScopeFactory serviceScopeFactory)
         {
             _rabbitMQClientService = rabbitMQClientService;
             _logger = logger;
             _serviceScopeFactory = serviceScopeFactory;
 
             _channel = _rabbitMQClientService.Connect();
-            _reportProcessService = reportProcessService;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -44,6 +42,8 @@ namespace Setur.ReportCreateWorkerService
 
             consumer.Received += async (model, ea) =>
             {
+                await Task.Delay(5000);
+
                 var body = ea.Body.ToArray();
                 var messageJson = Encoding.UTF8.GetString(body);
                 var message = JsonSerializer.Deserialize<ReportRequestedMessage>(messageJson);
@@ -59,8 +59,9 @@ namespace Setur.ReportCreateWorkerService
                     var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
                     var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
+                    var reportProcessService = scope.ServiceProvider.GetRequiredService<IReportProcessService>();
 
-                   await _reportProcessService.ProcessAsync(message.ReportId);
+                    await reportProcessService.ProcessAsync(message.ReportId);
 
 
                     _channel.BasicAck(ea.DeliveryTag, multiple: false);

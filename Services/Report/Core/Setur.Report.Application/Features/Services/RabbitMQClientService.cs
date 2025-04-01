@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Features.Services
 {
-    public class RabbitMQClientService :IRabbitMQClientService, IDisposable
+    public class RabbitMQClientService : IDisposable
     {
         private readonly ConnectionFactory _connectionFactory;
         private IConnection _connection;

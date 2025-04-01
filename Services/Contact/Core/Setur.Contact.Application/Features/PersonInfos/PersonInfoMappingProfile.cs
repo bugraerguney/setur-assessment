@@ -37,6 +37,9 @@ namespace Setur.Contact.Application.Features.PersonInfos
                 .ForMember(dest => dest.Created, opt => opt.Ignore())
                 .ForMember(dest => dest.Updated, opt => opt.Ignore())
                 .ReverseMap();
+            CreateMap<PersonInfo, ResultPersonWithContactInfosDto>()
+    .ForMember(dest => dest.ContactInfos, opt => opt.MapFrom(src => src.ContactInfos))
+    .ReverseMap();
         }
     }
 }

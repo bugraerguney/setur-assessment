@@ -16,13 +16,13 @@ namespace Setur.Report.Application.Features.ReportContacts
     {
         private readonly IReportContactRepository _reportRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IRabbitMqPublisher _messagePublisher;
+        private readonly RabbitMQPublisher _messagePublisher;
         private readonly IMapper _mapper;
 
         public ReportContactService(
             IReportContactRepository reportRepository,
             IUnitOfWork unitOfWork,
-            IRabbitMqPublisher messagePublisher,
+            RabbitMQPublisher messagePublisher,
             IMapper mapper)
         {
             _reportRepository = reportRepository;

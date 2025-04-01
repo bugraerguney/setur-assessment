@@ -32,10 +32,10 @@ namespace Setur.Report.Application.Extensions
 
             services.AddScoped<IReportContactService, ReportContactService>();
 
-            services.AddScoped<IRabbitMqPublisher, RabbitMQPublisher>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddSingleton<RabbitMQPublisher>();
 
-            services.AddSingleton<IRabbitMQClientService, RabbitMQClientService>();
+            services.AddSingleton<RabbitMQClientService>();
 
 
             return services;

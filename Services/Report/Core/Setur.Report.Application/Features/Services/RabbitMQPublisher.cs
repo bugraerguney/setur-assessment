@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Setur.Report.Application.Features.Services
 {
-    public class RabbitMQPublisher:IRabbitMqPublisher
+    public class RabbitMQPublisher
     {
-        private readonly IRabbitMQClientService _rabbitmqClientService;
+        private readonly RabbitMQClientService _rabbitmqClientService;
 
-        public RabbitMQPublisher(IRabbitMQClientService rabbitmqClientService)
+        public RabbitMQPublisher(RabbitMQClientService rabbitmqClientService)
         {
             _rabbitmqClientService = rabbitmqClientService;
         }
@@ -31,9 +31,8 @@ namespace Setur.Report.Application.Features.Services
             channel.BasicPublish(
        exchange: RabbitMQClientService.ExchangeName,
        routingKey: RabbitMQClientService.RoutingReport,
-       mandatory: false,
-       basicProperties: properties,
-       body: bodyByte);
+        properties,
+        bodyByte);
 
 
         }
