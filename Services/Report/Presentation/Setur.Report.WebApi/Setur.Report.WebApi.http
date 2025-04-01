@@ -1,0 +1,6 @@
+@Setur.Report.WebApi_HostAddress = http://localhost:5098
+
+GET {{Setur.Report.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

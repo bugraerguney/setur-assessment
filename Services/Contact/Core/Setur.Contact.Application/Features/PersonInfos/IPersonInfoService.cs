@@ -20,5 +20,7 @@ namespace Setur.Contact.Application.Features.PersonInfos
         Task<ServiceResult> UpdateAsync(Guid id, UpdatePersonInfoRequest request);
         Task<ServiceResult> DeleteAsync(Guid id);
         Task<ServiceResult<ResultPersonWithContactInfosDto>> GetPersonWithContactInfosAsync(Guid id);
-    }
+        Task<ServiceResult<List<ResultPersonStatisticDto>>> GetPersonStatisticsAsync();
+
+     }
 }

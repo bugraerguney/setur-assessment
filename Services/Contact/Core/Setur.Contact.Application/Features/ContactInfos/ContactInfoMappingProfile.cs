@@ -15,9 +15,25 @@ namespace Setur.Contact.Application.Features.ContactInfos
     {
         public ContactInfoMappingProfile()
         {
-            CreateMap<ResultContactInfoDto,ContactInfo>().ReverseMap();
-            CreateMap<CreateContactInfoRequest,ContactInfo>().ReverseMap();
-            CreateMap<UpdateContactInfoRequest,ContactInfo>().ReverseMap();
-         }
+             CreateMap<ResultContactInfoDto, ContactInfo>()
+                .ForMember(dest => dest.PersonInfo, opt => opt.Ignore())
+                .ForMember(dest => dest.Created, opt => opt.Ignore())
+                .ForMember(dest => dest.Updated, opt => opt.Ignore())
+                .ReverseMap();
+
+             CreateMap<CreateContactInfoRequest, ContactInfo>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.PersonInfo, opt => opt.Ignore())
+                .ForMember(dest => dest.Created, opt => opt.Ignore())
+                .ForMember(dest => dest.Updated, opt => opt.Ignore())
+                .ReverseMap();
+
+             CreateMap<UpdateContactInfoRequest, ContactInfo>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.PersonInfo, opt => opt.Ignore())
+                .ForMember(dest => dest.Created, opt => opt.Ignore())
+                .ForMember(dest => dest.Updated, opt => opt.Ignore())
+                .ReverseMap();
+        }
     }
 }
